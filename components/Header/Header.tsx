@@ -1,4 +1,4 @@
-import { AppBar, Button, Container, Icon, IconButton, makeStyles, Toolbar, Tooltip, Typography } from '@material-ui/core';
+import { AppBar, Button, Container, Hidden, Icon, IconButton, makeStyles, Toolbar, Tooltip, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import BrightnessHigh from '@material-ui/icons/BrightnessHigh';
 import BrightnessLow from '@material-ui/icons/BrightnessLow';
@@ -29,16 +29,18 @@ const Header = () => {
       <AppBar position="static">
         <Container>
           <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} aria-label="menu">
-              <MenuIcon fontSize="large" />
-            </IconButton>
+            <Hidden smUp>
+              <IconButton edge="start" className={classes.menuButton} aria-label="menu">
+                <MenuIcon fontSize="large" />
+              </IconButton>
+            </Hidden>
             <Typography variant="h4" className={classes.title}>
               Custom Theme
             </Typography>
             <Tooltip title={`Switch to ${value ? 'Light' : 'Dark'} mode`}>
               {value ?
-                <BrightnessHigh fontSize="large" className={classes.icon} onClick={() => setValue(false)} /> :
-                <BrightnessLow fontSize="large" className={classes.icon} onClick={() => setValue(true)} />}
+                <BrightnessLow fontSize="large" className={classes.icon} onClick={() => setValue(false)} /> :
+                <BrightnessHigh fontSize="large" className={classes.icon} onClick={() => setValue(true)} />}
             </Tooltip>
           </Toolbar>
         </Container>
